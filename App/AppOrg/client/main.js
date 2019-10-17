@@ -1,22 +1,17 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import '../both'
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
+// import { Messages } from '../both/collections'
+import { ReactiveVar } from 'meteor/reactive-var'
+import './ui/globalHelpers/globalHelpers'
 
-import './main.html';
+import './startup/router'
+import './ui/layout/layout'
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+// if (Meteor.isDevelopment){
+//     window.Messages = Messages
+// }
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+if (Meteor.isDevelopment){
+    window.FlowRouter = FlowRouter
+}
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
