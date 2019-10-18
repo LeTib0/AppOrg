@@ -5,10 +5,82 @@
 </template>
 
 <template name="createTaskForm">
+    <div class="card my-2">
+        <h3 class="card-header">Ajouter Tache</h3>
+        <div class="card-body">
+            <form class="js-create-task" method="post">
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <input type="text" class="form-control mb-2" placeholder="Titre" name="taskTitle">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" list="categorie" class="form-control mb-2" placeholder="Catégorie" name="taskCategori">
+                        <datalist id="cacategoriers">
+                            {{#each categori in mesCategories}}
+                                <option >{categori.name}</option>
+                            {{/each}}
+                        </datalist>
+                        
+                    </div>
+                </div>
+                <textarea name="description" required="true" rows="2" class="form-control mb-2" placeholder="Déscription"></textarea>
+                <div class="form-row ">
+                    <div class="col-md-6 form-control  mb-2">
+                        <div>
+                            <label for="stardDate"> Date Commencement </label>
+                        </div>
+                        <div>
+                            <input type="datetime-local" name="stardDate" id="stardDate">
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-control  mb-2">
+                            <div>
+                                <label for="endDate"> Date Fin </label>
+                            </div>
+                            <div>
+                                <input type="datetime-local" name="endDate" id="endDate">
+                            </div>
+                    </div>
+                </div>    
+                <div class="form-row ">
+                        <div class="col-md-6 form-control  mb-2">
+                            <div>
+                                <label for="taskPriority"> Prioriété de la tache </label>
+                            </div>
+                            <div>
+                                <select class="custom-select" name="taskPriority">
+                                    <option value="normal" selected  >Normale</option>
+                                    <option value="low">Faible</option>
+                                    <option value="strong">Forte</option>
+                                    <option value="srongly">Urgente</option>
+                                    <option value="abslolute">Absolue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-control  mb-2">
+                                <div>
+                                    <label for="taskWeight"> Poid de la tache </label>
+                                </div>
+                                <div>
+                                    <select class="custom-select" name="taskWeight">
+                                        <option value="1" selected  >1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="5">5</option>
+                                        <option value="8">8</option>
+                                        <option value="13">13</option>
+                                        <option value="21">21</option>
 
+                                    </select>
+                                </div>
+                        </div>
+                    </div>      
+            </form>
+        </div>
+    </div>
 
 </template>
-<!-- 
+
 <template name="addTaskModal">
     <div class="modal fade">
         <div class="modal-dialog">
@@ -17,4 +89,4 @@
             </div>
         </div>
     </div>
-</template> -->
+</template>
