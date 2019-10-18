@@ -6,3 +6,9 @@ FlowRouter.route('/',{
         BlazeLayout.render('layout', { main: 'home' })
     }
 })
+
+FlowRouter.route('/tasksBoard',{
+    action(){
+        BlazeLayout.render('layout', { main: 'tasksBoard' })
+    }
+})
