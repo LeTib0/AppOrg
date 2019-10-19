@@ -7,6 +7,33 @@ Template.createTaskForm.helpers({
     }
 })
 
+Template.createTaskForm.events({
+    'submit .js-create-task'(event,instance){
+        //Penser fermer modal
+        let taskTitle = event.target.taskTitle.value
+        let taskCategori = event.target.taskCategori.value
+        let description = event.target.description.value
+        let startDate = event.target.startDate.value
+        let endDate = event.target.endDate.value
+        let taskPriority = event.target.taskPriority.value
+        let taskWeight = event.target.taskWeight.value
+        Meteor.call('addTasks', {
+            taskTitle: taskTitle,
+            taskCategori: taskCategori,
+            description: description,
+            startDate: startDate,
+            endDate: endDate,
+            taskPriority: taskPriority,
+            taskWeight: taskWeight
+        },function(err, res){
+            if(!err) {
+            event.target.vomiOrNot.value = ''
+            }
+        })
+
+    }
+})
+
 
 Template.tasksBoard.events({
 'click .js-open-add-task-modal'(event, instance){

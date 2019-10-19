@@ -1,7 +1,8 @@
 <template name="tasksBoard">
     <div class="container">
-        <button class="btn btn-lg btn-outline-primary js-open-add-task-modal">Ajouter Tache</button>
+        <button class="btn btn-lg btn-outline-success js-open-add-task-modal">Ajouter Tache</button>
     </div>
+    {{>createTaskForm}}
 </template>
 
 <template name="createTaskForm">
@@ -27,10 +28,10 @@
                 <div class="form-row ">
                     <div class="col-md-6 form-control  mb-2">
                         <div>
-                            <label for="stardDate"> Date Commencement </label>
+                            <label for="startDate"> Date Commencement </label>
                         </div>
                         <div>
-                            <input type="datetime-local" name="stardDate" id="stardDate">
+                            <input type="datetime-local" name="startDate" id="startDate">
                         </div>
                     </div>
                     <div class="col-md-6 form-control  mb-2">
@@ -43,38 +44,42 @@
                     </div>
                 </div>    
                 <div class="form-row ">
-                        <div class="col-md-6 form-control  mb-2">
-                            <div>
-                                <label for="taskPriority"> Prioriété de la tache </label>
-                            </div>
-                            <div>
-                                <select class="custom-select" name="taskPriority">
-                                    <option value="normal" selected  >Normale</option>
-                                    <option value="low">Faible</option>
-                                    <option value="strong">Forte</option>
-                                    <option value="srongly">Urgente</option>
-                                    <option value="abslolute">Absolue</option>
-                                </select>
-                            </div>
+                    <div class="col-md-6 form-control  mb-2">
+                        <div>
+                            <label for="taskPriority"> Prioriété de la tache </label>
                         </div>
-                        <div class="col-md-6 form-control  mb-2">
-                                <div>
-                                    <label for="taskWeight"> Poid de la tache </label>
-                                </div>
-                                <div>
-                                    <select class="custom-select" name="taskWeight">
-                                        <option value="1" selected  >1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="5">5</option>
-                                        <option value="8">8</option>
-                                        <option value="13">13</option>
-                                        <option value="21">21</option>
+                        <div>
+                            <select class="custom-select" name="taskPriority">
+                                <option value="normal" selected  >Normale</option>
+                                <option value="low">Faible</option>
+                                <option value="strong">Forte</option>
+                                <option value="srongly">Urgente</option>
+                                <option value="abslolute">Absolue</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-control  mb-2">
+                        <div>
+                            <label for="taskWeight"> Poid de la tache </label>
+                        </div>
+                        <div>
+                            <select class="custom-select" name="taskWeight">
+                                <option value="1" selected  >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="8">8</option>
+                                <option value="13">13</option>
+                                <option value="21">21</option>
 
-                                    </select>
-                                </div>
+                            </select>
                         </div>
-                    </div>      
+                    </div>
+                </div> 
+                    <!-- <div class="col-md-12 form-control btn btn-outline-success js-add-task mb-2">
+                        <h5>Ajouter</h5>
+                    </div>    -->
+                <button type="submit" class="btn btn-lg btn-outline-success">Valider </button> 
             </form>
         </div>
     </div>
