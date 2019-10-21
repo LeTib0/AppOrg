@@ -53,7 +53,13 @@ Template.createTaskForm.events({
             taskWeight: taskWeight
         },function(err, res){
             if(!err) {
-            event.target.vomiOrNot.value = ''
+                 taskTitle = event.target.taskTitle.value = ''
+                 taskCategori = event.target.taskCategori.value = ''
+                 description = event.target.description.value = ''
+                 startDate = event.target.startDate.value = ''
+                 endDate = event.target.endDate.value = ''
+                 taskPriority = event.target.taskPriority.value = ''
+                 taskWeight = event.target.taskWeight.value = ''
             }
         })
 

@@ -11,8 +11,8 @@ Meteor.methods({
             throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
         }
         let infoTask = {
-            quickTaskTitle: infos.quickTaskTitle,
-            quikTaskCategori: infos.quikTaskCategori,
+            taskTitle: infos.quickTaskTitle,
+            taskCategori: infos.quikTaskCategori,
             createdAt: new Date(),
             ownerId: this.userId,
             ownerPseudo:Meteor.user().username
@@ -22,10 +22,8 @@ Meteor.methods({
             createdAt: new Date(),
             createBy: Meteor.user().username
         }
-        //Penser à vérifier si la catégorie existe
-        
+        if(Categories.findOne({name: infos.quikTaskCategori}) == undefined ){Categories.insert(categori)}
         Tasks.insert(infoTask)
-        Categories.insert(categori)
     },
     
 
@@ -62,9 +60,8 @@ Meteor.methods({
             createBy: Meteor.user().username
         }
 
-        //Penser à vérifier si la catégorie existe
         Tasks.insert(infoTask)
-        Categories.insert(categori)
+        if(Categories.findOne({name: information.taskCategori}) == undefined ){Categories.insert(categori)}
 
     }
 })
