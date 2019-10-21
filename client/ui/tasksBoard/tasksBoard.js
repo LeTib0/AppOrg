@@ -1,14 +1,40 @@
 import './tasksBoard.html'
 import {Categories} from './../../../both/collections'
 
+//tasksBoard
+Template.tasksBoard.helpers({
+    mesCategories(){
+        return Categories.find().fetch()
+    }
+})
+Template.tasksBoard.events({
+    'submit .js-create-quick-task'(event, instance){
+        event.preventDefault()
+        let quickTaskTitle = event.target.quickTaskTitle.value
+        let quikTaskCategori = event.target.quikTaskCategori.value
+
+        
+        Meteor.call('addQuickTask',{
+            quickTaskTitle: quickTaskTitle,
+            quikTaskCategori: quikTaskCategori
+        }, function(err, res ){
+            if(!err) {
+                event.target.quickTaskTitle.value = ''
+                event.target.quikTaskCategori.value = ''           
+            }
+        })
+        }
+})
+
+//createTaskForm
 Template.createTaskForm.helpers({
     mesCategories(){
         return Categories.find().fetch()
     }
 })
-
 Template.createTaskForm.events({
     'submit .js-create-task'(event,instance){
+        event.preventDefault()
         //Penser fermer modal
         let taskTitle = event.target.taskTitle.value
         let taskCategori = event.target.taskCategori.value
