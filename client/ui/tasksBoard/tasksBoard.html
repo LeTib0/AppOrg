@@ -8,10 +8,10 @@
         </div> 
         <div class="form-row">       
             <div class="col-md-6">
-                <input type="text" class="form-control mb-2" placeholder="Titre" name="quickTaskTitle">
+                <input type="text" class="form-control mb-2" required="true" placeholder="Titre" name="quickTaskTitle">
             </div>
             <div class="col-md-4">
-                <input type="text" list="quikTaskCategori" class="form-control mb-2" placeholder="Catégorie" name="quikTaskCategori">
+                <input type="text" list="quikTaskCategori" required="true" class="form-control mb-2" placeholder="Catégorie" name="quikTaskCategori">
                 <datalist id="quikTaskCategori">
                     {{#each categori in mesCategories}}
                         <option >{{categori.name}}</option>
@@ -40,37 +40,90 @@
                 {{#each task in myTasks}}
                 <tbody>
                     <tr>
-                        <td>{{task.taskTitle}}</td>
-                        <td>{{task.taskCategori}}</td>
-                        <td>{{task.taskWeight}}</td>
-                        <td>{{task.taskPriority}}</td>
+                        <td>
+                            <form action="" class="js-change-title">
+                                <input type="text" class="form-control mb-1" value="{{task.taskTitle}}">
+                                <button class="btn btn-secondary btn-sm">Modifier</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="" class="js-change-categorie">
+                                <input type="text" list="listTaskCategori" class="form-control mb-1" value="{{task.taskCategori}}" name="listTaskCategori">
+                                <datalist id="listTaskCategori">
+                                    {{#each categori in mesCategories}}
+                                        <option >{{categori.name}}</option>
+                                    {{/each}}
+                                </datalist>
+                                <button class="btn btn-secondary btn-sm">Modifier</button>
+                            </form>
+                        </td>
                         <td>
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </a>
+                                <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownWeight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{#if task.taskWeight}}
+                                        {{task.taskWeight}}
+                                        {{else}}
+                                         /
+                                    {{/if}}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownWeight">
+                                    <button value="1" id={{task._id}} class="dropdown-item js-change-weight-to" >1</button>
+                                    <button value="2" id={{task._id}} class="dropdown-item js-change-weight-to" >2</button>
+                                    <button value="3" id={{task._id}} class="dropdown-item js-change-weight-to" >3</button>
+                                    <button value="5" id={{task._id}} class="dropdown-item js-change-weight-to" >5</button>
+                                    <button value="8" id={{task._id}} class="dropdown-item js-change-weight-to" >8</button>
+                                    <button value="13" id={{task._id}} class="dropdown-item js-change-weight-to" >13</button>
+                                    <button value="21" id={{task._id}} class="dropdown-item js-change-weight-to" >21</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownPriority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{#if task.taskPriority}}
+                                        {{task.taskPriority}}
+                                        {{else}}
+                                        Choisir
+                                    {{/if}}
+                                </button>
                                 
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                    <a class="dropdown-item" href="#">Modifier</a>
-                                    <a class="dropdown-item" href="#">Archiver</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownPriority">
+                                    <button class="dropdown-item js-change-priority-to-normal" >Normal </button>
+                                    <button class="dropdown-item js-change-priority-to-low" >Faible</button>
+                                    <button class="dropdown-item js-change-priority-to-hight" >Forte</button>
+                                    <button class="dropdown-item js-change-priority-to-veryHight" >Urgente</button>
+                                    <button class="dropdown-item js-change-priority-to-absolute" >Absolue</button>
+
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                
+                                <div class="dropdown-menu" aria-labelledby="dropdownAction">
+                                    <button class="dropdown-item" >Modifier</button>
+                                    <button class="dropdown-item" >Archiver</button>
                                 </div>
                             </div>
                         </td>
                         <td>
                                 <div class="dropdown">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownState" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{#if task.taskState}}
                                             {{task.taskState}}
                                             {{else}}
                                             Choisir
                                         {{/if}}
-                                    </a>
+                                    </button>
                                     
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
-                                        <a class="dropdown-item" href="#">A Faire </a>
-                                        <a class="dropdown-item" href="#">En Cours</a>
-                                        <a class="dropdown-item" href="#">A tester</a>
-                                        <a class="dropdown-item" href="#">Fini</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownState">
+                                        <button class="dropdown-item js-change-state-to-toDO" >A Faire </button>
+                                        <button class="dropdown-item js-change-state-to-doing" >En Cours</button>
+                                        <button class="dropdown-item js-change-state-to-toTest" >A tester</button>
+                                        <button class="dropdown-item js-change-state-to-Done" >Fini</button>
                                     </div>
                                 </div>
                             </td>

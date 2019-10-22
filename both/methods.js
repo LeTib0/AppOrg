@@ -2,6 +2,21 @@ import {Categories,Tasks} from './collections'
 import { check } from 'meteor/check'
 Meteor.methods({
 
+    changeTaskWeight(weight){
+        check(weight,{
+            changeWeightTask: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = weight.taskId
+        let taskWeight = weight.changeWeightTask
+
+        Tasks.update({_id: taskId}, {$set: {taskWeight: taskWeight}})
+
+    },
+
     addQuickTask(infos){
         check(infos,{
             quickTaskTitle: String,  
