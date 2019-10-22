@@ -1,6 +1,85 @@
 import {Categories,Tasks} from './collections'
 import { check } from 'meteor/check'
 Meteor.methods({
+    
+    changeCategori(categori){
+        check(categori,{
+            taskCategori: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = categori.taskId
+        let taskCategori = categori.taskCategori
+
+        Tasks.update({_id: taskId}, {$set: {taskCategori: taskCategori}})
+
+    },    
+
+    changeCategoriTitle(title){
+        check(title,{
+            taskTitle: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = title.taskId
+        let taskTitle = title.taskTitle
+
+        Tasks.update({_id: taskId}, {$set: {taskTitle: taskTitle}})
+
+    },    
+    
+    changeTaskWeight(weight){
+        check(weight,{
+            changeWeightTask: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = weight.taskId
+        let taskWeight = weight.changeWeightTask
+
+        Tasks.update({_id: taskId}, {$set: {taskWeight: taskWeight}})
+
+    },
+
+    changeTaskPriority(priority){
+        check(priority,{
+            taskPriority: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = priority.taskId
+        let taskPriority = priority.taskPriority
+        console.log(taskId)
+        console.log(taskPriority)
+
+        Tasks.update({_id: taskId}, {$set: {taskPriority: taskPriority}})
+
+    },
+    changeTaskState(priority){
+        check(priority,{
+            taskState: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = priority.taskId
+        let taskState = priority.taskState
+        console.log(taskId)
+        console.log(taskState)
+
+        Tasks.update({_id: taskId}, {$set: {taskState: taskState}})
+
+    },
+    
 
     addQuickTask(infos){
         check(infos,{
@@ -36,6 +115,9 @@ Meteor.methods({
             endDate: String,
             taskPriority: String,
             taskWeight: String,
+            taskState: String,
+            taskTimeEstimed: String,
+
         })
 
         if(!this.userId) {
@@ -49,6 +131,8 @@ Meteor.methods({
             startDate: information.startDate,
             endDate: information.endDate,
             taskPriority: information.taskPriority,
+            taskTimeEstimed: information.taskTimeEstimed,
+            taskState: information.taskState,
             taskWeight: information.taskWeight,
             createdAt: new Date(),
             ownerId: this.userId,

@@ -1,5 +1,5 @@
 import './tasksBoard.html'
-import {Categories} from './../../../both/collections'
+import {Categories,Tasks} from './../../../both/collections'
 
 //tasksBoard
 Template.tasksBoard.helpers({
@@ -7,6 +7,13 @@ Template.tasksBoard.helpers({
         return Categories.find().fetch()
     }
 })
+
+Template.tasksBoard.helpers({
+    myTasks(){
+        return Tasks.find().fetch()
+    }
+})
+
 Template.tasksBoard.events({
     'submit .js-create-quick-task'(event, instance){
         event.preventDefault()
@@ -26,12 +33,75 @@ Template.tasksBoard.events({
         }
 })
 
+Template.tasksBoard.events({
+    'submit .js-change-title'(event, instance){
+        event.preventDefault()
+        let taskTitle = event.target.changeTaskTitle.value
+        let taskId = event.target.changeTaskTitle.id
+        Meteor.call('changeTaskTitlle',{
+            taskTitle : taskTitle,
+            taskId :taskId
+        })
+    }
+})
+
+Template.tasksBoard.events({
+    'submit .js-change-categorie'(event, instance){
+        event.preventDefault()
+        let taskCategori = event.target.changeCategori.value
+        let taskId = event.target.changeCategori.id
+        Meteor.call('changeCategori',{
+            taskCategori : taskCategori,
+            taskId :taskId
+        })
+    }
+})
+
+Template.tasksBoard.events({
+    'click .js-change-weight-to'(event,instance){
+        event.preventDefault()
+        let changeWeightTask = event.currentTarget.value
+        let taskId = event.currentTarget.id
+        Meteor.call('changeTaskWeight',{
+            changeWeightTask : changeWeightTask,
+            taskId :taskId
+        })
+    }
+})
+
+
+Template.tasksBoard.events({
+    'click .js-change-priority-to'(event,instance){
+        event.preventDefault()
+        let taskPriority = event.currentTarget.value
+        let taskId = event.currentTarget.id
+        Meteor.call('changeTaskPriority',{
+            taskPriority : taskPriority,
+            taskId :taskId
+        })
+    }
+})
+
+Template.tasksBoard.events({
+    'click .js-change-state-to'(event,instance){
+        event.preventDefault()
+        let taskState = event.currentTarget.value
+        let taskId = event.currentTarget.id
+        Meteor.call('changeTaskState',{
+            taskState : taskState,
+            taskId :taskId
+        })
+    }
+})
+
+
 //createTaskForm
 Template.createTaskForm.helpers({
     mesCategories(){
         return Categories.find().fetch()
     }
 })
+
 Template.createTaskForm.events({
     'submit .js-create-task'(event,instance){
         event.preventDefault()
@@ -43,6 +113,9 @@ Template.createTaskForm.events({
         let endDate = event.target.endDate.value
         let taskPriority = event.target.taskPriority.value
         let taskWeight = event.target.taskWeight.value
+        let taskTimeEstimed = event.target.taskTimeEstimed.value
+        let taskState = event.target.taskState.value
+
         Meteor.call('addTasks', {
             taskTitle: taskTitle,
             taskCategori: taskCategori,
@@ -50,6 +123,8 @@ Template.createTaskForm.events({
             startDate: startDate,
             endDate: endDate,
             taskPriority: taskPriority,
+            taskState: taskState,
+            taskTimeEstimed: taskTimeEstimed,
             taskWeight: taskWeight
         },function(err, res){
             if(!err) {
@@ -60,6 +135,8 @@ Template.createTaskForm.events({
                  endDate = event.target.endDate.value = ''
                  taskPriority = event.target.taskPriority.value = ''
                  taskWeight = event.target.taskWeight.value = ''
+                 taskTimeEstimed = event.target.taskTimeEstimed.value = ''
+                 taskState = event.target.taskState.value = ''
             }
         })
 
