@@ -82,6 +82,18 @@ Template.tasksBoard.events({
     }
 })
 
+Template.tasksBoard.events({
+    'click .js-change-state-to'(event,instance){
+        event.preventDefault()
+        let taskState = event.currentTarget.value
+        let taskId = event.currentTarget.id
+        Meteor.call('changeTaskState',{
+            taskState : taskState,
+            taskId :taskId
+        })
+    }
+})
+
 
 //createTaskForm
 Template.createTaskForm.helpers({

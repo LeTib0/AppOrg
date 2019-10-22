@@ -63,6 +63,23 @@ Meteor.methods({
         Tasks.update({_id: taskId}, {$set: {taskPriority: taskPriority}})
 
     },
+    changeTaskState(priority){
+        check(priority,{
+            taskState: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = priority.taskId
+        let taskState = priority.taskState
+        console.log(taskId)
+        console.log(taskState)
+
+        Tasks.update({_id: taskId}, {$set: {taskState: taskState}})
+
+    },
+    
 
     addQuickTask(infos){
         check(infos,{

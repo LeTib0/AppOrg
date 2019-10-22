@@ -120,10 +120,10 @@
                                     </button>
                                     
                                     <div class="dropdown-menu" aria-labelledby="dropdownState">
-                                        <button class="dropdown-item js-change-state-to-toDO" >A Faire </button>
-                                        <button class="dropdown-item js-change-state-to-doing" >En Cours</button>
-                                        <button class="dropdown-item js-change-state-to-toTest" >A tester</button>
-                                        <button class="dropdown-item js-change-state-to-Done" >Fini</button>
+                                        <button id={{task._id}} value="A Faire" class="dropdown-item js-change-state-to" >A Faire </button>
+                                        <button id={{task._id}} value="En Cours" class="dropdown-item js-change-state-to" >En Cours</button>
+                                        <button id={{task._id}} value="A tester" class="dropdown-item js-change-state-to" >A tester</button>
+                                        <button id={{task._id}} value="Fini" class="dropdown-item js-change-state-to" >Fini</button>
                                     </div>
                                 </div>
                             </td>
