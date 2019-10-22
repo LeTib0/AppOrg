@@ -65,10 +65,19 @@ Template.tasksBoard.events({
         Meteor.call('changeTaskWeight',{
             changeWeightTask : changeWeightTask,
             taskId :taskId
-        }, function(err, res){
-            if(!err){
+        })
+    }
+})
 
-            }
+
+Template.tasksBoard.events({
+    'click .js-change-priority-to'(event,instance){
+        event.preventDefault()
+        let taskPriority = event.currentTarget.value
+        let taskId = event.currentTarget.id
+        Meteor.call('changeTaskPriority',{
+            taskPriority : taskPriority,
+            taskId :taskId
         })
     }
 })

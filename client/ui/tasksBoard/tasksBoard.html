@@ -88,11 +88,11 @@
                                 </button>
                                 
                                 <div class="dropdown-menu" aria-labelledby="dropdownPriority">
-                                    <button class="dropdown-item js-change-priority-to-normal" >Normal </button>
-                                    <button class="dropdown-item js-change-priority-to-low" >Faible</button>
-                                    <button class="dropdown-item js-change-priority-to-hight" >Forte</button>
-                                    <button class="dropdown-item js-change-priority-to-veryHight" >Urgente</button>
-                                    <button class="dropdown-item js-change-priority-to-absolute" >Absolue</button>
+                                    <button id={{task._id}} value="normal" class="dropdown-item js-change-priority-to" >Normal </button>
+                                    <button id={{task._id}} value="faible" class="dropdown-item js-change-priority-to" >Faible</button>
+                                    <button id={{task._id}} value="forte" class="dropdown-item js-change-priority-to" >Forte</button>
+                                    <button id={{task._id}} value="urgente" class="dropdown-item js-change-priority-to" >Urgente</button>
+                                    <button id={{task._id}} value="absolue" class="dropdown-item js-change-priority-to" >Absolue</button>
 
                                 </div>
                             </div>
