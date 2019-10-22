@@ -59,7 +59,11 @@
                         <td>
                                 <div class="dropdown">
                                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       {{task.taskState}}
+                                        {{#if task.taskState}}
+                                            {{task.taskState}}
+                                            {{else}}
+                                            Choisir
+                                        {{/if}}
                                     </a>
                                     
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
