@@ -1,5 +1,5 @@
 import './tasksBoard.html'
-import {Categories} from './../../../both/collections'
+import {Categories,Tasks} from './../../../both/collections'
 
 //tasksBoard
 Template.tasksBoard.helpers({
@@ -7,6 +7,13 @@ Template.tasksBoard.helpers({
         return Categories.find().fetch()
     }
 })
+
+Template.tasksBoard.helpers({
+    myTasks(){
+        return Tasks.find().fetch()
+    }
+})
+
 Template.tasksBoard.events({
     'submit .js-create-quick-task'(event, instance){
         event.preventDefault()
@@ -32,6 +39,7 @@ Template.createTaskForm.helpers({
         return Categories.find().fetch()
     }
 })
+
 Template.createTaskForm.events({
     'submit .js-create-task'(event,instance){
         event.preventDefault()

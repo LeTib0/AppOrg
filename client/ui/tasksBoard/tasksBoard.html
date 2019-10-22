@@ -23,6 +23,62 @@
             </div>
         </div>
     </form>
+    <div >
+        <div> <h3> Liste des Taches</h3></div>
+        <div>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col-md-1">#</th>
+                        <th scope="col-md-3">Tache</th>
+                        <th scope="col-md-2">Categorie</th>
+                        <th scope="col-md-1">Poid</th>
+                        <th scope="col-md-1">Priorité</th>
+                        <th scope="col-md-2">Action</th>
+                        <th scope="col-md-2">Etat</th>
+                    </tr>
+                </thead>
+                {{#each task in myTasks}}
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{task.taskTitle}}</td>
+                        <td>{{task.taskCategori}}</td>
+                        <td>{{task.taskWeight}}</td>
+                        <td>{{task.taskPriority}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </a>
+                                
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                    <a class="dropdown-item" href="#">Modifier</a>
+                                    <a class="dropdown-item" href="#">Archiver</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Etat
+                                    </a>
+                                    
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                                        <a class="dropdown-item" href="#">A Faire </a>
+                                        <a class="dropdown-item" href="#">En Cours</a>
+                                        <a class="dropdown-item" href="#">A tester</a>
+                                        <a class="dropdown-item" href="#">Fini</a>
+                                    </div>
+                                </div>
+                            </td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+
 </template>
 
 <template name="createTaskForm">
