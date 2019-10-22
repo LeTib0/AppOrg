@@ -46,6 +46,18 @@ Template.tasksBoard.events({
 })
 
 Template.tasksBoard.events({
+    'submit .js-change-categorie'(event, instance){
+        event.preventDefault()
+        let taskCategori = event.target.changeCategori.value
+        let taskId = event.target.changeCategori.id
+        Meteor.call('changeCategori',{
+            taskCategori : taskCategori,
+            taskId :taskId
+        })
+    }
+})
+
+Template.tasksBoard.events({
     'click .js-change-weight-to'(event,instance){
         event.preventDefault()
         let changeWeightTask = event.currentTarget.value

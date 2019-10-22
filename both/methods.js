@@ -2,7 +2,22 @@ import {Categories,Tasks} from './collections'
 import { check } from 'meteor/check'
 Meteor.methods({
     
-    changeTaskTitlle(title){
+    changeCategori(categori){
+        check(categori,{
+            taskCategori: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = categori.taskId
+        let taskCategori = categori.taskCategori
+
+        Tasks.update({_id: taskId}, {$set: {taskCategori: taskCategori}})
+
+    },    
+
+    changeCategoriTitle(title){
         check(title,{
             taskTitle: String,
             taskId : String

@@ -48,7 +48,7 @@
                         </td>
                         <td>
                             <form action="" class="js-change-categorie">
-                                <input type="text" list="listTaskCategori" class="form-control mb-1" value="{{task.taskCategori}}" name="listTaskCategori">
+                                <input type="text" id={{task._id}} list="listTaskCategori" class="form-control mb-1" value="{{task.taskCategori}}" name="changeCategori">
                                 <datalist id="listTaskCategori">
                                     {{#each categori in mesCategories}}
                                         <option >{{categori.name}}</option>
