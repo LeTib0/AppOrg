@@ -1,7 +1,22 @@
 import {Categories,Tasks} from './collections'
 import { check } from 'meteor/check'
 Meteor.methods({
+    
+    changeTaskTitlle(title){
+        check(title,{
+            taskTitle: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = title.taskId
+        let taskTitle = title.taskTitle
 
+        Tasks.update({_id: taskId}, {$set: {taskTitle: taskTitle}})
+
+    },    
+    
     changeTaskWeight(weight){
         check(weight,{
             changeWeightTask: String,

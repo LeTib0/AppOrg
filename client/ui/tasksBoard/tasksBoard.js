@@ -34,12 +34,22 @@ Template.tasksBoard.events({
 })
 
 Template.tasksBoard.events({
+    'submit .js-change-title'(event, instance){
+        event.preventDefault()
+        let taskTitle = event.target.changeTaskTitle.value
+        let taskId = event.target.changeTaskTitle.id
+        Meteor.call('changeTaskTitlle',{
+            taskTitle : taskTitle,
+            taskId :taskId
+        })
+    }
+})
+
+Template.tasksBoard.events({
     'click .js-change-weight-to'(event,instance){
         event.preventDefault()
         let changeWeightTask = event.currentTarget.value
         let taskId = event.currentTarget.id
-        console.log(taskId)
-        console.log(changeWeightTask)
         Meteor.call('changeTaskWeight',{
             changeWeightTask : changeWeightTask,
             taskId :taskId
