@@ -51,6 +51,9 @@ Template.createTaskForm.events({
         let endDate = event.target.endDate.value
         let taskPriority = event.target.taskPriority.value
         let taskWeight = event.target.taskWeight.value
+        let taskTimeEstimed = event.target.taskTimeEstimed.value
+        let taskState = event.target.taskState.value
+
         Meteor.call('addTasks', {
             taskTitle: taskTitle,
             taskCategori: taskCategori,
@@ -58,6 +61,8 @@ Template.createTaskForm.events({
             startDate: startDate,
             endDate: endDate,
             taskPriority: taskPriority,
+            taskState: taskState,
+            taskTimeEstimed: taskTimeEstimed,
             taskWeight: taskWeight
         },function(err, res){
             if(!err) {
@@ -68,6 +73,8 @@ Template.createTaskForm.events({
                  endDate = event.target.endDate.value = ''
                  taskPriority = event.target.taskPriority.value = ''
                  taskWeight = event.target.taskWeight.value = ''
+                 taskTimeEstimed = event.target.taskTimeEstimed.value = ''
+                 taskState = event.target.taskState.value = ''
             }
         })
 

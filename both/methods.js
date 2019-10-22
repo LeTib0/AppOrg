@@ -36,6 +36,9 @@ Meteor.methods({
             endDate: String,
             taskPriority: String,
             taskWeight: String,
+            taskState: String,
+            taskTimeEstimed: String,
+
         })
 
         if(!this.userId) {
@@ -49,6 +52,8 @@ Meteor.methods({
             startDate: information.startDate,
             endDate: information.endDate,
             taskPriority: information.taskPriority,
+            taskTimeEstimed: information.taskTimeEstimed,
+            taskState: information.taskState,
             taskWeight: information.taskWeight,
             createdAt: new Date(),
             ownerId: this.userId,
