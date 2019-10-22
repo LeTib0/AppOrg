@@ -57,22 +57,7 @@ AccountsTemplates.addFields([
   },
   pwd
 ])
-AccountsTemplates.addField({
-    _id: "SamOrNot",
-    type: "select",
-    displayName: "Sam ou Passager",
-    select: [
-        {
-            text: "Sam",
-            value: "sam",
-        },
-        {
-            text: "Passager",
-            value: "passager",
-        },
-        
-    ],
-});
+
 
 AccountsTemplates.addField({
     _id: "accept_cgu",
