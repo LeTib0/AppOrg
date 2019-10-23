@@ -27,6 +27,22 @@ Template.tasksBoard.events({
 })
 
 Template.tasksBoard.events({
+    'submit .js-change-start-date'(event, instance){
+        event.preventDefault()
+        let taskStartDate = event.target.taskStartDate.value
+        let taskId = event.target.taskStartDate.id
+        Meteor.call('changeStartDate',{
+            startDate: taskStartDate,
+            taskId : taskId
+        }, function(err, res ){
+            if(!err) {
+                event.target.taskStartDate.value =''
+            }
+        })
+    }
+})
+
+Template.tasksBoard.events({
     'submit .js-create-quick-task'(event, instance){
         event.preventDefault()
         let quickTaskTitle = event.target.quickTaskTitle.value

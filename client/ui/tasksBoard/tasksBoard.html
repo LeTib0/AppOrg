@@ -117,10 +117,10 @@
                     <tbody  class="collapse" id="collapseTask{{task._id}}">
                         <tr>
                             <th scope="col-md-3"> Date Début: {{task.startDate}}
-                                <form action="">
+                                <form action="" class="js-change-start-date">
                                     <div class="row">
-                                        <div class="col-md-8"><input type="date" name="" id="" class="form-control mb-1"></div>
-                                        <div class="col-md-4"><button class="btn btn-secondary ">Modifier</button></div>
+                                        <div class="col-md-8"><input type="date" name="taskStartDate" id={{task._id}} class="form-control mb-1"></div>
+                                        <div class="col-md-4"><button type="submit" class="btn btn-secondary ">Modifier</button></div>
                                     </div>
                                 </form>
                             </th>

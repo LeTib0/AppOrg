@@ -61,6 +61,21 @@ Meteor.methods({
 
     },
 
+    changeStartDate(StartDate){
+        check(StartDate,{
+            startDate: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = StartDate.taskId
+        let startDate = StartDate.startDate
+
+        Tasks.update({_id: taskId}, {$set: {startDate: startDate}})
+
+    },
+
     changeTaskPriority(priority){
         check(priority,{
             taskPriority: String,
