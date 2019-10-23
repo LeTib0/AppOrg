@@ -41,6 +41,21 @@ Template.tasksBoard.events({
         })
     }
 })
+Template.tasksBoard.events({
+    'submit .js-change-end-date'(event, instance){
+        event.preventDefault()
+        let taskEndDate = event.target.taskEndDate.value
+        let taskId = event.target.taskEndDate.id
+        Meteor.call('changeEndDate',{
+            endDate: taskEndDate,
+            taskId : taskId
+        }, function(err, res ){
+            if(!err) {
+                event.target.taskEndDate.value =''
+            }
+        })
+    }
+})
 
 Template.tasksBoard.events({
     'submit .js-create-quick-task'(event, instance){

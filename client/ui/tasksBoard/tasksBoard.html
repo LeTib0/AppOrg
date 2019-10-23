@@ -126,9 +126,9 @@
                             </th>
                             <th scope="col-md-3">
                                 Date Fin: {{task.endDate}}
-                                <form action="">
+                                <form action="" class="js-change-end-date">
                                     <div class="row">
-                                    <div class="col-md-8"><input type="date" name="" id="" class="form-control mb-1"></div>
+                                    <div class="col-md-8"><input type="date" name="taskEndDate" id={{task._id}} class="form-control mb-1"></div>
                                     <div class="col-md-4"><button class="btn btn-secondary ">Modifier</button></div>
                                     </div>
                                 </form>
