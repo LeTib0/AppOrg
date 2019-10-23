@@ -46,6 +46,50 @@ Meteor.methods({
         Tasks.update({_id: taskId}, {$set: {taskWeight: taskWeight}})
 
     },
+    changeGrade(grade){
+        check(grade,{
+            taskGrade: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = grade.taskId
+        let taskGrade = grade.taskGrade
+
+        Tasks.update({_id: taskId}, {$set: {taskGrade: taskGrade}})
+
+    },
+
+    changeStartDate(StartDate){
+        check(StartDate,{
+            startDate: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = StartDate.taskId
+        let startDate = StartDate.startDate
+
+        Tasks.update({_id: taskId}, {$set: {startDate: startDate}})
+
+    },
+
+    changeEndDate(EndDate){
+        check(EndDate,{
+            endDate: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = EndDate.taskId
+        let endDate = EndDate.endDate
+
+        Tasks.update({_id: taskId}, {$set: {endDate: endDate}})
+
+    },
 
     changeTaskPriority(priority){
         check(priority,{
