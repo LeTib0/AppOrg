@@ -25,91 +25,70 @@
     </form>
     <div >
         <div> <h3> Liste des Taches</h3></div>
-        <div>
-            <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col-md-4">Tache</th>
-                        <th scope="col-md-2">Categorie</th>
-                        <th scope="col-md-1">Poid</th>
-                        <th scope="col-md-1">Priorité</th>
-                        <th scope="col-md-2">Action</th>
-                        <th scope="col-md-2">Etat</th>
-                    </tr>
-                </thead>
-                {{#each task in myTasks}}
-                <tbody>
-                    <tr>
-                        <td>
-                            <form action="" class="js-change-title">
-                                <input type="text" id={{task._id}} name="changeTaskTitle" class="form-control mb-1" value="{{task.taskTitle}}">
-                                <button class="btn btn-secondary btn-sm">Modifier</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="" class="js-change-categorie">
-                                <input type="text" id={{task._id}} list="listTaskCategori" class="form-control mb-1" value="{{task.taskCategori}}" name="changeCategori">
-                                <datalist id="listTaskCategori">
-                                    {{#each categori in mesCategories}}
-                                        <option >{{categori.name}}</option>
-                                    {{/each}}
-                                </datalist>
-                                <button class="btn btn-secondary btn-sm">Modifier</button>
-                            </form>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownWeight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{#if task.taskWeight}}
-                                        {{task.taskWeight}}
-                                        {{else}}
-                                         /
-                                    {{/if}}
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownWeight">
-                                    <button value="1" id={{task._id}} class="dropdown-item js-change-weight-to" >1</button>
-                                    <button value="2" id={{task._id}} class="dropdown-item js-change-weight-to" >2</button>
-                                    <button value="3" id={{task._id}} class="dropdown-item js-change-weight-to" >3</button>
-                                    <button value="5" id={{task._id}} class="dropdown-item js-change-weight-to" >5</button>
-                                    <button value="8" id={{task._id}} class="dropdown-item js-change-weight-to" >8</button>
-                                    <button value="13" id={{task._id}} class="dropdown-item js-change-weight-to" >13</button>
-                                    <button value="21" id={{task._id}} class="dropdown-item js-change-weight-to" >21</button>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownPriority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{#if task.taskPriority}}
-                                        {{task.taskPriority}}
-                                        {{else}}
-                                        Choisir
-                                    {{/if}}
-                                </button>
-                                
-                                <div class="dropdown-menu" aria-labelledby="dropdownPriority">
-                                    <button id={{task._id}} value="normal" class="dropdown-item js-change-priority-to" >Normal </button>
-                                    <button id={{task._id}} value="faible" class="dropdown-item js-change-priority-to" >Faible</button>
-                                    <button id={{task._id}} value="forte" class="dropdown-item js-change-priority-to" >Forte</button>
-                                    <button id={{task._id}} value="urgente" class="dropdown-item js-change-priority-to" >Urgente</button>
-                                    <button id={{task._id}} value="absolue" class="dropdown-item js-change-priority-to" >Absolue</button>
+        {{#each task in myTasks}}
+            <div>
+                <table class="table table-hover table-dark">
+                    <thead >
+                        <tr>
+                            <th scope="col-md-4">Tache</th>
+                            <th scope="col-md-3">Categorie</th>
+                            <th scope="col-md-2">Priorité</th>
+                            <th scope="col-md-2">Etat</th>
+                            <th scope="col-md-1"> + </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form action="" class="js-change-title">
+                                    <input type="text" id={{task._id}} name="changeTaskTitle" class="form-control mb-1" value="{{task.taskTitle}}">
+                                    <button class="btn btn-secondary btn-sm">Modifier</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" class="js-change-categorie">
+                                    <input type="text" id={{task._id}} list="listTaskCategori" class="form-control mb-1" value="{{task.taskCategori}}" name="changeCategori">
+                                    <datalist id="listTaskCategori">
+                                        {{#each categori in mesCategories}}
+                                            <option >{{categori.name}}</option>
+                                        {{/each}}
+                                    </datalist>
+                                    <button class="btn btn-secondary btn-sm">Modifier</button>
+                                </form>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownPriority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{#if task.taskPriority}}
+                                            {{task.taskPriority}}
+                                            {{else}}
+                                            Choisir
+                                        {{/if}}
+                                    </button>
+                                    
+                                    <div class="dropdown-menu" aria-labelledby="dropdownPriority">
+                                        <button id={{task._id}} value="normal" class="dropdown-item js-change-priority-to" >Normal </button>
+                                        <button id={{task._id}} value="faible" class="dropdown-item js-change-priority-to" >Faible</button>
+                                        <button id={{task._id}} value="forte" class="dropdown-item js-change-priority-to" >Forte</button>
+                                        <button id={{task._id}} value="urgente" class="dropdown-item js-change-priority-to" >Urgente</button>
+                                        <button id={{task._id}} value="absolue" class="dropdown-item js-change-priority-to" >Absolue</button>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                
-                                <div class="dropdown-menu" aria-labelledby="dropdownAction">
-                                    <button class="dropdown-item" >Modifier</button>
-                                    <button class="dropdown-item" >Archiver</button>
+                            </td>
+                            <!-- <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    
+                                    <div class="dropdown-menu" aria-labelledby="dropdownAction">
+                                        <button class="dropdown-item" >Modifier</button>
+                                        <button class="dropdown-item" >Archiver</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
+                            </td> -->
+                            <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownState" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{#if task.taskState}}
@@ -127,11 +106,83 @@
                                     </div>
                                 </div>
                             </td>
-                    </tr>
-                </tbody>
-                {{/each}}
-            </table>
-        </div>
+                            <td>
+                                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseTask{{task._id}}" aria-expanded="false" aria-controls="collapseExample">
+                                    +
+                                </button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    <tbody  class="collapse" id="collapseTask{{task._id}}">
+                        <tr>
+                            <th scope="col-md-3"> Date Début: {{task.startDate}}
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-8"><input type="date" name="" id="" class="form-control mb-1"></div>
+                                        <div class="col-md-4"><button class="btn btn-secondary ">Modifier</button></div>
+                                    </div>
+                                </form>
+                            </th>
+                            <th scope="col-md-3">
+                                Date Fin: {{task.endDate}}
+                                <form action="">
+                                    <div class="row">
+                                    <div class="col-md-8"><input type="date" name="" id="" class="form-control mb-1"></div>
+                                    <div class="col-md-4"><button class="btn btn-secondary ">Modifier</button></div>
+                                    </div>
+                                </form>
+                            </th>
+
+                            <th scope="col-md-3">
+                                <!-- <div class="row">  -->
+                                    Difficultée
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownWeight" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{#if task.taskWeight}}
+                                                {{task.taskWeight}}
+                                                {{else}}
+                                                /
+                                            {{/if}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownWeight">
+                                            <button value="1" id={{task._id}} class="dropdown-item js-change-weight-to" >1</button>
+                                            <button value="2" id={{task._id}} class="dropdown-item js-change-weight-to" >2</button>
+                                            <button value="3" id={{task._id}} class="dropdown-item js-change-weight-to" >3</button>
+                                            <button value="5" id={{task._id}} class="dropdown-item js-change-weight-to" >5</button>
+                                            <button value="8" id={{task._id}} class="dropdown-item js-change-weight-to" >8</button>
+                                            <button value="13" id={{task._id}} class="dropdown-item js-change-weight-to" >13</button>
+                                            <button value="21" id={{task._id}} class="dropdown-item js-change-weight-to" >21</button>
+                                        </div>
+                                    </div>
+                                <!-- </div> -->
+                            </th>
+                            <th scope="col-md-3">
+                                Note
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownGrade" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{#if task.taskGrade}}
+                                            {{task.taskGrade}}/5
+                                            {{else}}
+                                            ?/5
+                                        {{/if}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownGrade">
+                                        <button value="1" id={{task._id}} class="dropdown-item js-change-grade-to" >1</button>
+                                        <button value="2" id={{task._id}} class="dropdown-item js-change-grade-to" >2</button>
+                                        <button value="3" id={{task._id}} class="dropdown-item js-change-grade-to" >3</button>
+                                        <button value="4" id={{task._id}} class="dropdown-item js-change-grade-to" >4</button>
+                                        <button value="5" id={{task._id}} class="dropdown-item js-change-grade-to" >5</button>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        {{/each}}
     </div>
 
 </template>

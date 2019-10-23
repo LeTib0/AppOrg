@@ -46,6 +46,20 @@ Meteor.methods({
         Tasks.update({_id: taskId}, {$set: {taskWeight: taskWeight}})
 
     },
+    changeGrade(grade){
+        check(grade,{
+            taskGrade: String,
+            taskId : String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let taskId = grade.taskId
+        let taskGrade = grade.taskGrade
+
+        Tasks.update({_id: taskId}, {$set: {taskGrade: taskGrade}})
+
+    },
 
     changeTaskPriority(priority){
         check(priority,{

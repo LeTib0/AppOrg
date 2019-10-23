@@ -15,6 +15,18 @@ Template.tasksBoard.helpers({
 })
 
 Template.tasksBoard.events({
+    'click .js-change-grade-to'(event, instance){
+        event.preventDefault()
+        let taskGrade = event.currentTarget.value
+        let taskId = event.currentTarget.id
+        Meteor.call('changeGrade',{
+            taskGrade: taskGrade,
+            taskId : taskId
+        })
+    }
+})
+
+Template.tasksBoard.events({
     'submit .js-create-quick-task'(event, instance){
         event.preventDefault()
         let quickTaskTitle = event.target.quickTaskTitle.value
